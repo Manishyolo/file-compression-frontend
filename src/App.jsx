@@ -7,8 +7,13 @@ const App = () => {
     e.preventDefault()
       const formdata = new FormData(e.target);
 
-      const file = formdata.get("file")
-      console.log(file)
+      console.log(formdata)
+            
+      const file = formdata.get("file");
+      const resolution = formdata.get("resolution");
+      
+
+      console.log(file,resolution);
    const data = await fetch("http://localhost:3000/api/file/compress",{
     method:"POST",
     body:formdata
@@ -22,8 +27,12 @@ const App = () => {
   return (
     <div>
        <form action="submit" onSubmit={handleupload}>
-
+         <select name='resolution' id='resolution'>
+          <option value="640 x 360">640 x 360</option>
+          <option value="4096 x 2160">4096 x 2160</option>
+        </select>
         <input type="file" placeholder='upload your file here' name='file'/>
+       
         <button type='submit'>Upload</button>
        </form>
          {
