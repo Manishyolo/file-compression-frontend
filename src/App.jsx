@@ -10,10 +10,10 @@ const App = () => {
       console.log(formdata)
             
       const file = formdata.get("file");
-      const resolution = formdata.get("resolution");
+      const CompressionLevel = formdata.get("CompressionLevel");
       
 
-      console.log(file,resolution);
+      console.log(file,CompressionLevel);
    const data = await fetch("http://localhost:3000/api/file/compress",{
     method:"POST",
     body:formdata
@@ -27,11 +27,14 @@ const App = () => {
   return (
     <div>
        <form action="submit" onSubmit={handleupload}>
-         <select name='resolution' id='resolution'>
-             <option value="Default">Default</option>
-          <option value="640 x 360">640 x 360</option>
-          <option value="4096 x 2160">4096 x 2160</option>
-          <option value="1920 x 1080">1920 x 1080</option>
+         <select name='CompressionLevel' id='CompressionLevel'>
+         
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+            <option value="VeryHigh">VeryHigh</option>
+              <option value="Ultra">Ultra</option>
+                <option value="Psycho">Psycho</option>
         </select>
         <input type="file" placeholder='upload your file here' name='file'/>
        
