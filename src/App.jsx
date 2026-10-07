@@ -35,6 +35,7 @@ const App = () => {
             <option value="VeryHigh">VeryHigh</option>
               <option value="Ultra">Ultra</option>
                 <option value="Psycho">Psycho</option>
+                 <option value="Psycho">Ultra Psycho</option>
         </select>
         <input type="file" placeholder='upload your file here' name='file'/>
        
