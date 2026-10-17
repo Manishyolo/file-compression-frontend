@@ -11,10 +11,11 @@ const CustomCompressionPage = () => {
     console.log(formdata);
 
     const file = formdata.get("file");
-    const CompressionLevel = formdata.get("CompressionLevel");
+    const Encoder = formdata.get("Encoder");
+    const Bitrate = formdata.get("Bitrate");
 
-    console.log(file, CompressionLevel);
-    const data = await fetch("http://localhost:3000/api/file/compress", {
+    console.log(file,Encoder,Bitrate);
+    const data = await fetch("http://localhost:3000/api/file/compress/custom", {
       method: "POST",
       body: formdata,
     });
@@ -26,13 +27,27 @@ const CustomCompressionPage = () => {
   return (
     <>
       <form action="submit" onSubmit={handleupload}>
-          <input type="number" min="1" max="128" id="VideoBitrate"/>
-          <label for="VideoBitrate">Video Bitrate</label>
+
+          <label >Select an Encoder</label><br></br>
+           <select id="Encoder" name="Encoder">
+          
+            <option value={"libx264"}>H.264</option>
+             <option value={"libx265"}>H.265</option>
+              <option value={"libvpx-vp9"}>VP9</option>
+           </select><br></br>
+               <label >Select an Bitrate</label><br></br>
+           <select id="Bitrate" name="Bitrate">
+          
+            <option value="18">18</option>
+             <option value="23">23</option>
+              <option value="28">28</option>
+               <option value="36">36</option>
+           </select><br></br>
 
 
 
 
-        <input type="file" placeholder="upload your file here" name="file" />
+        <input type="file" placeholder="upload your file here" name="file" /><br></br>
 
         <button type="submit">Upload</button>
       </form>
